@@ -1,6 +1,9 @@
 function start() {
+    console.log('** Administration Hotel **');
     console.log("1. Lister les clients");
     console.log("99. Sortir");
+
+    var lst = require('./service');
 
     // récupération du module `readline` 
     var readline = require('readline');
@@ -18,7 +21,10 @@ function start() {
         // la variable `saisie` contient la saisie effectuée
         if (saisie == "1") {
             console.log(">> Liste des clients");
-            start();
+            lst.liste(function(clients) {
+                console.log(clients);
+                start();
+            });
         } else if (saisie == "99") {
             console.log("Aurevoir");
             rl.close(); // attention, une fois l'interface fermée, la saisie n'est plus possible
